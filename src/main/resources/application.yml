@@ -1,0 +1,44 @@
+server:
+  forward-headers-strategy: framework
+  tomcat:
+    relaxed-path-chars: "[,]"
+    relaxed-query-chars: "[,]"
+
+# logging:
+#   level:
+#     root: DEBUG
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: env
+
+argocd:
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcmdvY2QiLCJzdWIiOiJhdXRvbWF0aW9uOmFwaUtleSIsIm5iZiI6MTY4NjMwNzE5MiwiaWF0IjoxNjg2MzA3MTkyLCJqdGkiOiI1NTFlZjgzMi05MjVmLTRjNzAtYWVmMy1jYjc5MjYxMThjZDYifQ.j16bd29QVOrprLb5IYspGz1KFxDVqNncq8B1qTNft0Q
+  url: https://knot-argocd.westeurope.cloudapp.azure.com/api/v1/          
+
+github:
+  token: ${GITHUB_PAT:token}
+  reposUrl: https://api.github.com/repos
+  organization: NTTData-HybridCloud
+  repositoryName: knot-onboarding-resources
+
+
+auth:
+  github:
+    user-uri: "https://api.github.com/user"
+    graphql-uri: "https://api.github.com/graphql"
+
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    configUrl: /experience-api/api-docs/swagger-config
+    enabled: true
+    disable-swagger-default-url: true
+    url: /experience-api/api-docs
+  api-docs:
+    path: /api-docs
+    enabled: true
